@@ -1,0 +1,13 @@
+/* Styles personnalisés */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: #04A7D6;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    background-color: #F2F2F2;
+  }
+  
