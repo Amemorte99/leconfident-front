@@ -53,6 +53,7 @@ const logoDark = new URL('@/assets/images/logo-confident.svg', import.meta.url).
           </RouterLink>
 
           <!-- Menu desktop -->
+             <!-- Menu desktop -->
           <nav class="hidden lg:flex items-center gap-10 xl:gap-14">
             <RouterLink to="/" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Accueil</RouterLink>
             <RouterLink to="/rubrique/actualites" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Actualités</RouterLink>
@@ -93,7 +94,7 @@ const logoDark = new URL('@/assets/images/logo-confident.svg', import.meta.url).
       <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4">
         <nav class="hidden lg:flex flex-wrap justify-center gap-x-10 gap-y-2 text-xs font-extrabold uppercase tracking-widest text-gray-700 dark:text-gray-200">
           <RouterLink
-            v-for="cat in ['National','International','Politique','Société','Économie & Business','Sécurité & Défense','Diplomatie','Culture','Tech & Innovation','Opinions','Éditorial','Reportages']"
+            v-for="cat in ['National','International','Politique','Société','Économie & Business','Sécurité & Défense','Diplomatie','Culture','Tech & Innovation','Opinions','Nécrologie','Reportages']"
             :key="cat"
             :to="`/rubrique/${cat.toLowerCase().replace(/ & /g,'-').replace(/ /g,'-')}`"
             class="hover:text-[#04A7D6] transition"
