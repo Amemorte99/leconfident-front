@@ -105,60 +105,85 @@ const logoDark = new URL('@/assets/images/logo-confident.svg', import.meta.url).
     </div>
 
     <!-- MENU MOBILE – LOGO AUSSI EN VERSION SOMBRE -->
-    <Teleport to="body">
-      <transition
-        enter-active-class="transition duration-400 ease-out"
-        enter-from-class="opacity-0 scale-95"
-        enter-to-class="opacity-100 scale-100"
-        leave-active-class="transition duration-300 ease-in"
-        leave-from-class="opacity-100 scale-100"
-        leave-to-class="opacity-0 scale-95"
+<Teleport to="body">
+  <transition
+    enter-active-class="transition duration-400 ease-out"
+    enter-from-class="opacity-0"
+    enter-to-class="opacity-100"
+    leave-active-class="transition duration-300 ease-in"
+    leave-from-class="opacity-100"
+    leave-to-class="opacity-0"
+  >
+    <div
+      v-if="mobileMenuOpen"
+      class="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm"
+      @click="mobileMenuOpen = false"
+    >
+      <!-- Contenu du menu – scrollable + ne ferme pas au clic -->
+      <div
+        class="absolute inset-x-0 top-0 bottom-0 bg-white dark:bg-[#001F33] flex flex-col"
+        @click.stop
       >
-        <div v-if="mobileMenuOpen" class="fixed inset-0 z-[9999] bg-white dark:bg-[#001F33] flex flex-col" @click="mobileMenuOpen = false">
-          <!-- Header mobile -->
-          <div class="flex items-center justify-between px-8 py-10 border-b border-gray-200 dark:border-white/10">
-            <RouterLink to="/" @click="mobileMenuOpen = false">
-              <img :src="isDark ? logoDark : logoLight" alt="Le Confident" class="h-20 md:h-20" />
-            </RouterLink>
-            <button @click.stop="mobileMenuOpen = false" class="p-4 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
+        <!-- Header fixe -->
+        <div class="flex items-center justify-between px-6 py-8 border-b border-gray-200 dark:border-white/10">
+          <RouterLink to="/" @click="mobileMenuOpen = false">
+            <img :src="isDark ? logoDark : logoLight" alt="Le Confident" class="h-14" />
+          </RouterLink>
+          <button
+            @click="mobileMenuOpen = false"
+            class="p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition"
+          >
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
 
-          <!-- Contenu mobile -->
-          <div class="flex-1 flex items-center justify-center px-8" @click.stop>
-            <nav class="w-full max-w-lg space-y-10 text-center">
-              <RouterLink to="/" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
+        <!-- ZONE SCROLABLE – C’EST ÇA LE TRUC -->
+        <div class="flex-1 overflow-y-auto overscroll-contain">
+          <div class="px-10 py-16">
+            <nav class="mx-auto max-w-md space-y-12 text-center">
+              <RouterLink to="/" @click="mobileMenuOpen=false"
+                class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
                 Accueil
               </RouterLink>
-              <RouterLink to="/rubrique/actualites" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
+
+              <RouterLink to="/rubrique/actualites" @click="mobileMenuOpen=false"
+                class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
                 Actualités
               </RouterLink>
-              <RouterLink to="/dossiers" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#F9A826] my-16 hover:scale-110 transition-all duration-700">
+
+              <RouterLink to="/dossiers" @click="mobileMenuOpen=false"
+                class="block text-4xl font-black text-[#F9A826] my-20 hover:scale-110 transition-all duration-700">
                 DOSSIERS
               </RouterLink>
-              <RouterLink to="/rubrique/editorial" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#04A7D6] hover:text-white transition-all duration-500 hover:scale-105">
+
+              <RouterLink to="/rubrique/editorial" @click="mobileMenuOpen=false"
+                class="block text-4xl font-black text-[#04A7D6] hover:text-white transition-all duration-500 hover:scale-105">
                 Éditorial
               </RouterLink>
 
-              <div class="pt-16 border-t-2 border-gray-200 dark:border-white/20 space-y-8">
-                <RouterLink
-                  v-for="cat in ['National','International','Politique','Société','Économie & Business','Sécurité & Défense','Diplomatie','Culture','Tech & Innovation','Opinions','Reportages']"
-                  :key="cat"
-                  :to="`/rubrique/${cat.toLowerCase().replace(/ & /g,'-').replace(/ /g,'-')}`"
-                  @click="mobileMenuOpen = false"
-                  class="block text-2xl md:text-3xl font-bold text-gray-700 dark:text-gray-200 hover:text-[#04A7D6] transition-all duration-500 hover:scale-105"
-                >
-                  {{ cat }}
-                </RouterLink>
+              <!-- Sous-rubriques -->
+              <div class="pt-20 border-t-2 border-gray-200 dark:border-white/20">
+                <div class="space-y-10 text-2xl font-bold text-gray-700 dark:text-gray-200">
+                  <RouterLink
+                    v-for="cat in ['National','International','Politique','Société','Économie & Business','Sécurité & Défense','Diplomatie','Culture','Tech & Innovation','Opinions','Reportages']"
+                    :key="cat"
+                    :to="`/rubrique/${cat.toLowerCase().replace(/ & /g,'-').replace(/ /g,'-')}`"
+                    @click="mobileMenuOpen = false"
+                    class="block py-4 hover:text-[#04A7D6] transition-all duration-500 hover:scale-105"
+                  >
+                    {{ cat }}
+                  </RouterLink>
+                </div>
               </div>
             </nav>
           </div>
         </div>
-      </transition>
-    </Teleport>
+      </div>
+    </div>
+  </transition>
+</Teleport>
   </header>
 </template>
 
