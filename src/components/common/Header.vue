@@ -130,16 +130,16 @@ const logoDark = '/src/assets/images/logo-confident.svg'
           <!-- Contenu mobile -->
           <div class="flex-1 flex items-center justify-center px-8" @click.stop>
             <nav class="w-full max-w-lg space-y-10 text-center">
-              <RouterLink to="/" @click="mobileMenuOpen=false" class="block text-5xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
+              <RouterLink to="/" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
                 Accueil
               </RouterLink>
-              <RouterLink to="/rubrique/actualites" @click="mobileMenuOpen=false" class="block text-5xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
+              <RouterLink to="/rubrique/actualites" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
                 Actualités
               </RouterLink>
-              <RouterLink to="/dossiers" @click="mobileMenuOpen=false" class="block text-7xl font-black text-[#F9A826] my-16 hover:scale-110 transition-all duration-700">
+              <RouterLink to="/dossiers" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#F9A826] my-16 hover:scale-110 transition-all duration-700">
                 DOSSIERS
               </RouterLink>
-              <RouterLink to="/rubrique/editorial" @click="mobileMenuOpen=false" class="block text-5xl font-black text-[#04A7D6] hover:text-white transition-all duration-500 hover:scale-105">
+              <RouterLink to="/rubrique/editorial" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#04A7D6] hover:text-white transition-all duration-500 hover:scale-105">
                 Éditorial
               </RouterLink>
 
