@@ -58,7 +58,7 @@ const logoDark = new URL('@/assets/images/logo-confident.svg', import.meta.url).
             <RouterLink to="/rubrique/actualites" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Actualités</RouterLink>
             <RouterLink to="/rubrique/analyses" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Analyses</RouterLink>
             <RouterLink to="/rubrique/enquetes" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Enquêtes</RouterLink>
-            <RouterLink to="/rubrique/economie" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Économie</RouterLink>
+            <RouterLink to="/rubrique/sports" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Sports</RouterLink>
             <RouterLink to="/rubrique/editorial" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Éditorial</RouterLink>
             <RouterLink to="/dossiers" class="text-2xl font-extrabold text-[#F9A826] hover:opacity-90 transition">DOSSIERS</RouterLink>
           </nav>

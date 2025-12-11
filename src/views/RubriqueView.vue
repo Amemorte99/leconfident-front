@@ -23,7 +23,9 @@ const rubriqueNames: Record<string, string> = {
   reportages: 'Reportages',
   enquetes: 'Enquêtes',
   analyses: 'Analyses & Décryptages',
-  editorial: 'Éditorial'
+  editorial: 'Éditorial',
+  necrologie:'Nécrologie',
+  sports:'Sports'
 }
 
 const rubriqueTitle = computed(() => {
