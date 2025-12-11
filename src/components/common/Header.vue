@@ -1,4 +1,4 @@
-<!-- src/components/common/Header.vue – VERSION PARFAITE 2025 (Dark Mode Impeccable) -->
+<!-- src/components/common/Header.vue – LOGO AUTO CLAIR/SOMBRE 2025 -->
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -7,11 +7,13 @@ import SearchBar from '@/components/common/SearchBar.vue'
 
 // Dark mode
 const isDark = ref(false)
+
 onMounted(() => {
   const saved = localStorage.getItem('leconfident-theme')
   isDark.value = saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)
   if (isDark.value) document.documentElement.classList.add('dark')
 })
+
 const toggleDarkMode = () => {
   isDark.value = !isDark.value
   document.documentElement.classList.toggle('dark', isDark.value)
@@ -26,6 +28,10 @@ const breakingNews = ref({
   title: 'Urgent : Le gouvernement annonce un couvre-feu national à partir de 20h ce soir',
   link: '/article/couvre-feu-national-2025'
 })
+
+// Chemins des logos
+const logoLight = '/src/assets/images/logo-removebg.png'      
+const logoDark = '/src/assets/images/logo-confident.svg'      
 </script>
 
 <template>
@@ -37,16 +43,16 @@ const breakingNews = ref({
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between h-28 lg:h-32">
 
-          <!-- Logo -->
+          <!-- LOGO QUI CHANGE AUTOMATIQUEMENT SELON LE THÈME -->
           <RouterLink to="/" class="group -ml-3">
             <img
-              src="@/assets/images/logo-removebg.png"
+              :src="isDark ? logoDark : logoLight"
               alt="Le Confident"
-              class="h-28 lg:h-36 w-auto object-contain transition-transform duration-700 group-hover:scale-105"
+              class="h-28 lg:h-36 w-auto object-contain transition-all duration-700 group-hover:scale-105"
             />
           </RouterLink>
 
-          <!-- Menu principal desktop -->
+          <!-- Menu desktop -->
           <nav class="hidden lg:flex items-center gap-10 xl:gap-14">
             <RouterLink to="/" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Accueil</RouterLink>
             <RouterLink to="/rubrique/actualites" class="text-xl font-bold text-gray-900 dark:text-gray-100 hover:text-[#04A7D6] transition">Actualités</RouterLink>
@@ -60,10 +66,8 @@ const breakingNews = ref({
           <!-- Actions droite -->
           <div class="flex items-center gap-6">
             <SearchBar />
-
-            <!-- Dark mode -->
             <button @click="toggleDarkMode" class="p-4 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition" aria-label="Mode sombre">
-              <svg v-if="!isDark" class="w-6 h-6 text-gray-900 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg v-if="!isDark" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
               </svg>
               <svg v-else class="w-6 h-6 text-[#04A7D6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,7 +75,6 @@ const breakingNews = ref({
               </svg>
             </button>
 
-            <!-- Burger mobile -->
             <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden p-4 rounded-xl hover:bg-gray-100 dark:hover:bg-white/10 transition" aria-label="Menu">
               <svg class="w-7 h-7" :class="{ hidden: mobileMenuOpen }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M4 6h16M4 12h16M4 18h16"/>
@@ -101,7 +104,7 @@ const breakingNews = ref({
       </div>
     </div>
 
-    <!-- MENU MOBILE – PARFAIT EN CLAIR & SOMBRE -->
+    <!-- MENU MOBILE – LOGO AUSSI EN VERSION SOMBRE -->
     <Teleport to="body">
       <transition
         enter-active-class="transition duration-400 ease-out"
@@ -115,7 +118,7 @@ const breakingNews = ref({
           <!-- Header mobile -->
           <div class="flex items-center justify-between px-8 py-10 border-b border-gray-200 dark:border-white/10">
             <RouterLink to="/" @click="mobileMenuOpen = false">
-              <img src="@/assets/images/logo-removebg.png" alt="Le Confident" class="h-16 md:h-20" />
+              <img :src="isDark ? logoDark : logoLight" alt="Le Confident" class="h-20 md:h-20" />
             </RouterLink>
             <button @click.stop="mobileMenuOpen = false" class="p-4 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition">
               <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,19 +127,19 @@ const breakingNews = ref({
             </button>
           </div>
 
-          <!-- Contenu mobile – couleurs parfaites -->
+          <!-- Contenu mobile -->
           <div class="flex-1 flex items-center justify-center px-8" @click.stop>
             <nav class="w-full max-w-lg space-y-10 text-center">
-              <RouterLink to="/" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
+              <RouterLink to="/" @click="mobileMenuOpen=false" class="block text-5xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
                 Accueil
               </RouterLink>
-              <RouterLink to="/rubrique/actualites" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
+              <RouterLink to="/rubrique/actualites" @click="mobileMenuOpen=false" class="block text-5xl font-black text-[#003B5C] dark:text-white hover:text-[#04A7D6] transition-all duration-500 hover:scale-105">
                 Actualités
               </RouterLink>
-              <RouterLink to="/dossiers" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#F9A826] my-16 hover:scale-110 transition-all duration-700">
+              <RouterLink to="/dossiers" @click="mobileMenuOpen=false" class="block text-7xl font-black text-[#F9A826] my-16 hover:scale-110 transition-all duration-700">
                 DOSSIERS
               </RouterLink>
-              <RouterLink to="/rubrique/editorial" @click="mobileMenuOpen=false" class="block text-4xl font-black text-[#04A7D6] hover:text-white transition-all duration-500 hover:scale-105">
+              <RouterLink to="/rubrique/editorial" @click="mobileMenuOpen=false" class="block text-5xl font-black text-[#04A7D6] hover:text-white transition-all duration-500 hover:scale-105">
                 Éditorial
               </RouterLink>
 
@@ -160,7 +163,6 @@ const breakingNews = ref({
 </template>
 
 <style scoped>
-/* Couleurs ultra-propres pour le CDN */
 .text-primary { color: #04A7D6; }
 .text-orange { color: #F9A826; }
 </style>
