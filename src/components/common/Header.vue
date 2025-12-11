@@ -30,8 +30,8 @@ const breakingNews = ref({
 })
 
 // Chemins des logos
-const logoLight = '/src/assets/images/logo-removebg.png'      
-const logoDark = '/src/assets/images/logo-confident.svg'      
+const logoLight = new URL('@/assets/images/logo-removebg.png', import.meta.url).href
+const logoDark = new URL('@/assets/images/logo-confident.svg', import.meta.url).href     
 </script>
 
 <template>
