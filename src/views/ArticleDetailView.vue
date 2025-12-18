@@ -38,76 +38,78 @@ const article = ref({
 
 <template>
   <div class="min-h-screen bg-gray-50">
-    <!-- Hero Section avec overlay élégant -->
-    <section class="relative h-[70vh] md:h-[85vh] overflow-hidden">
+    <!-- Hero Section: Immersif et élégant, avec zoom subtil -->
+    <section class="relative h-[60vh] sm:h-[80vh] md:h-screen overflow-hidden">
       <img
         :src="article.image"
         :alt="article.title"
-        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[20s] ease-linear hover:scale-110"
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-[25s] ease-in-out hover:scale-105"
       />
       
-      <!-- Overlay dégradé plus sophistiqué -->
-      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+      <!-- Overlay dégradé sophistiqué pour lisibilité optimale -->
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
       
-      <!-- Contenu hero -->
-      <div class="absolute inset-x-0 bottom-0 pb-12 md:pb-20 px-6 md:px-12 max-w-5xl mx-auto">
-        <CategoryTag :category="article.category" class="mb-6" />
-        
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg">
-          {{ article.title }}
-        </h1>
-        
-        <div class="mt-8 flex flex-wrap items-center gap-6 text-white/90 text-sm md:text-base">
-          <span class="font-medium">{{ article.author }}</span>
-          <span class="hidden sm:inline">•</span>
-          <time>{{ article.date }}</time>
-          <span>•</span>
-          <span>{{ article.readingTime }} min de lecture</span>
+      <!-- Contenu hero: Centré verticalement sur grands écrans -->
+      <div class="absolute inset-x-0 bottom-0 sm:inset-y-0 sm:flex sm:items-end sm:justify-start pb-10 sm:pb-16 px-6 sm:px-10 md:px-16 max-w-6xl mx-auto">
+        <div class="max-w-3xl">
+          <CategoryTag :category="article.category" class="mb-4 sm:mb-6" />
+          
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-xl tracking-tight">
+            {{ article.title }}
+          </h1>
+          
+          <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-4 sm:gap-6 text-white/85 text-sm sm:text-base">
+            <span class="font-semibold">{{ article.author }}</span>
+            <span class="hidden sm:inline">•</span>
+            <time datetime="2025-12-10">{{ article.date }}</time>
+            <span>•</span>
+            <span>{{ article.readingTime }} min de lecture</span>
+          </div>
         </div>
       </div>
       
-      <!-- Scroll indicator subtil -->
-      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Indicateur de scroll discret -->
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 animate-bounce hidden sm:block">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
     </section>
 
-    <!-- Contenu principal -->
-    <article class="bg-white -mt-12 md:-mt-20 relative z-10 rounded-t-3xl shadow-2xl">
-      <div class="container mx-auto px-6 py-16 md:px-12 lg:px-20 max-w-4xl">
-        <div class="prose prose-lg lg:prose-xl max-w-none">
+    <!-- Contenu principal: Chevauchement élégant avec bord arrondi -->
+    <article class="relative z-10 bg-white -mt-16 sm:-mt-24 md:-mt-32 rounded-t-3xl sm:rounded-t-[4rem] shadow-2xl">
+      <div class="container mx-auto px-6 py-16 sm:py-20 md:py-24 md:px-12 lg:px-20 max-w-4xl">
+        <div class="prose prose-lg md:prose-xl max-w-none">
           <div v-html="article.content"></div>
         </div>
 
-        <!-- Section partage -->
-        <div class="mt-20 pt-12 border-t border-gray-200">
-          <p class="text-sm uppercase tracking-wider text-gray-600 mb-6">Partagez cet article</p>
-          <div class="flex items-center gap-5">
+        <!-- Section partage: Icônes plus grandes et espacées -->
+        <div class="mt-24 pt-16 border-t border-gray-200/50">
+          <p class="text-sm uppercase tracking-widest text-gray-500 mb-8 font-medium">Partagez cet article</p>
+          <div class="flex items-center justify-center sm:justify-start gap-6">
             <button
               aria-label="Partager sur X (Twitter)"
-              class="group w-12 h-12 rounded-full bg-[#04A7D6] text-white flex items-center justify-center hover:bg-[#003B5C] transition-all duration-300 shadow-md hover:shadow-lg"
+              class="group w-14 h-14 rounded-full bg-[#04A7D6] text-white flex items-center justify-center hover:bg-[#003B5C] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
-              <span class="text-lg font-bold">X</span>
+              <span class="text-xl font-bold">X</span>
             </button>
             <button
               aria-label="Partager sur Facebook"
-              class="group w-12 h-12 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:bg-[#166fe5] transition-all duration-300 shadow-md hover:shadow-lg"
+              class="group w-14 h-14 rounded-full bg-[#1877F2] text-white flex items-center justify-center hover:bg-[#166fe5] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
-              <span class="text-lg font-bold">f</span>
+              <span class="text-xl font-bold">f</span>
             </button>
             <button
               aria-label="Partager sur LinkedIn"
-              class="group w-12 h-12 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:bg-[#004182] transition-all duration-300 shadow-md hover:shadow-lg"
+              class="group w-14 h-14 rounded-full bg-[#0A66C2] text-white flex items-center justify-center hover:bg-[#004182] transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
-              <span class="text-lg font-bold">in</span>
+              <span class="text-xl font-bold">in</span>
             </button>
             <button
               aria-label="Copier le lien"
-              class="group w-12 h-12 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-all duration-300 shadow-md hover:shadow-lg"
+              class="group w-14 h-14 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
               </svg>
             </button>
@@ -116,13 +118,13 @@ const article = ref({
       </div>
     </article>
 
-    <!-- Section "À lire aussi" -->
-    <section class="py-20 bg-gray-50">
-      <div class="container mx-auto px-6 md:px-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-[#003B5C] mb-12 text-center">À lire aussi</h2>
-        <div class="text-center text-gray-600 bg-white rounded-2xl shadow-lg py-16">
-          <p class="text-xl">Cette section arrive bientôt avec des suggestions personnalisées.</p>
-          <p class="mt-4 text-lg">Nos équipes y travaillent activement.</p>
+    <!-- Section "À lire aussi": Plus élégante avec placeholder premium -->
+    <section class="py-20 md:py-28 bg-gray-50">
+      <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#003B5C] mb-12 text-center tracking-tight">À lire aussi</h2>
+        <div class="text-center text-gray-600 bg-white rounded-3xl shadow-xl py-20 px-8">
+          <p class="text-xl md:text-2xl font-light">Cette section arrive bientôt avec des suggestions personnalisées.</p>
+          <p class="mt-6 text-lg text-gray-500">Nos équipes y travaillent activement pour vous offrir le meilleur contenu.</p>
         </div>
       </div>
     </section>
@@ -130,56 +132,57 @@ const article = ref({
 </template>
 
 <style scoped>
-/* Typographie et styles pour le contenu injecté via v-html */
+/* Styles pour contenu injecté: Typographie premium et responsive */
 .prose :deep(p) {
   margin-bottom: 1.75rem;
-  color: #374151;
+  color: #333;
   line-height: 1.8;
+  font-size: 1.1rem;
 }
 
 .prose :deep(.lead) {
   font-size: 1.375rem;
-  line-height: 1.7;
-  color: #1f2937;
+  line-height: 1.6;
+  color: #222;
   font-weight: 500;
 }
 
 .prose :deep(h2) {
-  font-size: 2.125rem;
+  font-size: 1.875rem;
   font-weight: 800;
   color: #003B5C;
-  margin: 3rem 0 1.5rem;
+  margin: 2.5rem 0 1.25rem;
   position: relative;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
 }
 
 .prose :deep(h2)::before {
   content: '';
   position: absolute;
-  left: -2rem;
-  top: 50%;
-  width: 6px;
-  height: 2.5rem;
+  left: 0;
+  bottom: -1px;
+  width: 4rem;
+  height: 3px;
   background-color: #04A7D6;
-  transform: translateY(-50%);
-  border-radius: 4px;
+  border-radius: 2px;
 }
 
 .prose :deep(blockquote) {
-  margin: 3rem 0;
-  padding: 2rem 2.5rem;
-  background: linear-gradient(to right, #04A7D6, transparent);
-  background-color: #f8fdff;
-  border-left: 6px solid #04A7D6;
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background-color: #f9fdff;
+  border-left: 8px solid #04A7D6;
   border-radius: 0 12px 12px 0;
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.8;
-  color: #1e40af;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #1e3a8a;
 }
 
 .prose :deep(blockquote cite) {
   display: block;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   font-style: normal;
   font-size: 1rem;
   color: #4b5563;
@@ -192,20 +195,28 @@ const article = ref({
   font-weight: 700;
 }
 
-/* Responsive ajustements */
+/* Responsive ajustements pour petits écrans */
 @media (max-width: 768px) {
-  .prose :deep(h2)::before {
-    display: none;
+  .prose :deep(p) {
+    font-size: 1rem;
   }
-  
+
+  .prose :deep(.lead) {
+    font-size: 1.25rem;
+  }
+
+  .prose :deep(h2) {
+    font-size: 1.625rem;
+  }
+
   .prose :deep(blockquote) {
-    padding: 1.5rem;
-    border-radius: 0 8px 8px 0;
+    padding: 1.25rem 1.5rem;
+    font-size: 1rem;
   }
 }
 
-/* Animation subtile au hover sur l'image hero */
-img:hover {
-  transform: scale(1.1);
+/* Hover sur image hero pour interactivité */
+img {
+  transition: transform 0.5s ease;
 }
 </style>
