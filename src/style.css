@@ -109,35 +109,4 @@ button:focus-visible {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Glow orange */
-.animate-glow {
-  animation: glow 4s ease-in-out infinite;
-}
-@keyframes glow {
-  0%, 100% { text-shadow: 0 0 20px rgba(249, 168, 38, 0.6); }
-  50% { text-shadow: 0 0 40px rgba(249, 168, 38, 0.9); }
-}
 
-/* Scroll ball */
-@keyframes scroll-ball {
-  0%, 100% { transform: translateY(0); opacity: 0.7; }
-  50% { transform: translateY(12px); opacity: 1; }
-}
-.animate-scroll-ball {
-  animation: scroll-ball 2s ease-in-out infinite;
-}
-
-/* Scroll reveal pour cartes */
-.reveal-card {
-  opacity: 0;
-  transform: translateY(80px);
-  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-card:nth-child(1) { transition-delay: 0.1s; }
-.reveal-card:nth-child(2) { transition-delay: 0.3s; }
-.reveal-card:nth-child(3) { transition-delay: 0.5s; }
-.reveal-card:nth-child(4) { transition-delay: 0.7s; }
