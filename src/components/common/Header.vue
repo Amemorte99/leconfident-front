@@ -1,4 +1,4 @@
-<!-- src/components/common/Header.vue – MENU MOBILE CENTRÉ & DESIGN PRO -->
+<!-- src/components/common/Header.vue – MENU MOBILE ULTRA PROFESSIONNEL & MODERNE (Senior Dev Style 2025) -->
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
@@ -41,27 +41,26 @@ const breakingNews = ref({
 
 // Chemins des logos
 const logoLight = new URL('@/assets/images/logo-removebg.png', import.meta.url).href
-const logoDark = new URL('@/assets/images/logo-confident.svg', import.meta.url).href     
+const logoDark = new URL('@/assets/images/logo-confident.svg', import.meta.url).href
 
 // Liste des rubriques principales
 const mainItems = ['Accueil', 'Actualités', 'Analyses', 'Enquêtes', 'Sports', 'Éditorial', 'DOSSIERS']
 
 // Sous-rubriques
 const subCategories = [
-  'National','International','Politique','Société','Économie & Business',
-  'Sécurité & Défense','Diplomatie','Culture','Tech & Innovation','Opinions','Nécrologie','Reportages'
+  'National', 'International', 'Politique', 'Société', 'Économie & Business',
+  'Sécurité & Défense', 'Diplomatie', 'Culture', 'Tech & Innovation', 'Opinions', 'Nécrologie', 'Reportages'
 ]
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 bg-white/95 dark:bg-[#001F33]/95 backdrop-blur-lg shadow-sm transition-all duration-500">
+  <header class="sticky top-0 z-50 bg-white/95 dark:bg-[#001F33]/95 backdrop-blur-xl shadow-lg transition-all duration-500">
     <BreakingNewsBanner v-if="breakingNews" :news="breakingNews" />
 
     <!-- Barre principale -->
     <div class="border-b border-gray-200 dark:border-white/10">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="flex items-center justify-between h-28 lg:h-32">
-
           <!-- LOGO -->
           <RouterLink to="/" class="group -ml-3">
             <img
@@ -123,10 +122,11 @@ const subCategories = [
       </div>
     </div>
 
-    <!-- MENU MOBILE – CENTRÉ & ÉLÉGANT -->
+    <!-- MENU MOBILE – DESIGN SENIOR : ÉLÉGANT, SPACIEUX, ANIMÉ, PROFESSIONNEL -->
     <Teleport to="body">
+      <!-- Overlay avec animation fluide -->
       <transition
-        enter-active-class="transition duration-400 ease-out"
+        enter-active-class="transition duration-500 ease-out"
         enter-from-class="opacity-0"
         enter-to-class="opacity-100"
         leave-active-class="transition duration-300 ease-in"
@@ -135,84 +135,102 @@ const subCategories = [
       >
         <div
           v-if="mobileMenuOpen"
-          class="fixed inset-0 z-[9999] bg-black/50 backdrop-blur-sm"
+          class="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-md"
           @click="mobileMenuOpen = false"
+        />
+      </transition>
+
+      <!-- Panneau latéral qui glisse depuis la droite (plus moderne que full overlay centré) -->
+      <transition
+        enter-active-class="transition-transform duration-500 ease-out"
+        enter-from-class="translate-x-full"
+        enter-to-class="translate-x-0"
+        leave-active-class="transition-transform duration-400 ease-in"
+        leave-from-class="translate-x-0"
+        leave-to-class="translate-x-full"
+      >
+        <div
+          v-if="mobileMenuOpen"
+          class="fixed inset-y-0 right-0 z-[10000] w-full max-w-md bg-white dark:bg-[#001F33] shadow-2xl flex flex-col overflow-hidden"
+          @click.stop
         >
-          <div
-            class="absolute inset-x-0 top-0 h-full bg-white dark:bg-[#001F33] flex flex-col"
-            @click.stop
-          >
-            <!-- Header fixe -->
-            <div class="flex items-center justify-between px-6 py-8 border-b border-gray-200 dark:border-white/10">
-              <RouterLink to="/" @click="mobileMenuOpen = false">
-                <img :src="isDark ? logoDark : logoLight" alt="Le Confident" class="h-14 w-auto" />
-              </RouterLink>
-              <button
-                @click="mobileMenuOpen = false"
-                class="p-3 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition"
-              >
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
+          <!-- Header du menu mobile -->
+          <div class="flex items-center justify-between px-8 py-10 border-b border-gray-200 dark:border-white/10">
+            <RouterLink to="/" @click="mobileMenuOpen = false" class="flex items-center">
+              <img :src="isDark ? logoDark : logoLight" alt="Le Confident" class="h-16 w-auto" />
+            </RouterLink>
+            <button
+              @click="mobileMenuOpen = false"
+              class="p-4 rounded-full bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition"
+              aria-label="Fermer le menu"
+            >
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
 
-            <!-- Contenu scrollable – CENTRÉ -->
-            <div class="flex-1 overflow-y-auto py-8">
-              <nav class="mx-auto max-w-md w-full px-6">
-                <ul class="space-y-1 text-center">
-                  <!-- Items principaux – centrés -->
-                  <li v-for="item in mainItems" :key="item">
-                    <RouterLink
-                      :to="item === 'Accueil' ? '/' : item === 'DOSSIERS' ? '/dossiers' : `/rubrique/${item.toLowerCase()}`"
-                      @click="mobileMenuOpen = false"
-                      class="block py-5 text-2xl font-black transition-colors"
-                      :class="{
-                        'text-[#003B5C] dark:text-white hover:text-[#04A7D6]': item !== 'DOSSIERS',
-                        'text-[#F9A826] hover:text-[#F9A826]/80': item === 'DOSSIERS'
-                      }"
-                    >
-                      {{ item }}
-                    </RouterLink>
-                  </li>
+          <!-- Contenu scrollable -->
+          <div class="flex-1 overflow-y-auto">
+            <nav class="px-8 py-12">
+              <ul class="space-y-8">
+                <!-- Liens principaux – gros, espacés, avec effet subtil -->
+                <li v-for="item in mainItems" :key="item">
+                  <RouterLink
+                    :to="item === 'Accueil' ? '/' : item === 'DOSSIERS' ? '/dossiers' : `/rubrique/${item.toLowerCase()}`"
+                    @click="mobileMenuOpen = false"
+                    class="block text-3xl font-black tracking-tight transition-all duration-300 hover:translate-x-2"
+                    :class="{
+                      'text-[#003B5C] dark:text-white hover:text-[#04A7D6]': item !== 'DOSSIERS',
+                      'text-[#F9A826] hover:text-[#F9A826]/80': item === 'DOSSIERS'
+                    }"
+                  >
+                    {{ item }}
+                  </RouterLink>
+                </li>
 
-                  <!-- Sous-rubriques en accordéon – centré aussi -->
-                  <li class="border-t-2 border-gray-200 dark:border-white/10 mt-10 pt-8">
-                    <button
-                      @click="toggleSubmenu('sous-rubriques')"
-                      class="w-full flex items-center justify-center gap-3 py-5 text-2xl font-black text-[#003B5C] dark:text-white"
-                      :aria-expanded="openSubmenus.has('sous-rubriques')"
+                <!-- Accordéon Rubriques -->
+                <li class="pt-12 border-t-4 border-gray-200 dark:border-white/10">
+                  <button
+                    @click="toggleSubmenu('sous-rubriques')"
+                    class="w-full flex items-center justify-between py-6 text-3xl font-black text-[#003B5C] dark:text-white tracking-tight"
+                    :aria-expanded="openSubmenus.has('sous-rubriques')"
+                  >
+                    Rubriques
+                    <svg
+                      class="w-8 h-8 text-[#04A7D6] transition-transform duration-500"
+                      :class="{ 'rotate-180': openSubmenus.has('sous-rubriques') }"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      Rubriques
-                      <svg class="w-6 h-6 transition-transform duration-300" :class="{ 'rotate-180': openSubmenus.has('sous-rubriques') }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
 
-                    <transition
-                      enter-active-class="transition duration-300 ease-out"
-                      enter-from-class="max-h-0 opacity-0"
-                      enter-to-class="max-h-screen opacity-100"
-                      leave-active-class="transition duration-200 ease-in"
-                      leave-from-class="max-h-screen opacity-100"
-                      leave-to-class="max-h-0 opacity-0"
-                    >
-                      <ul v-show="openSubmenus.has('sous-rubriques')" class="overflow-hidden mt-4">
-                        <li v-for="cat in subCategories" :key="cat">
-                          <RouterLink
-                            :to="`/rubrique/${cat.toLowerCase().replace(/ & /g,'-').replace(/ /g,'-')}`"
-                            @click="mobileMenuOpen = false"
-                            class="block py-4 text-xl font-semibold text-gray-700 dark:text-gray-300 hover:text-[#04A7D6] transition"
-                          >
-                            {{ cat }}
-                          </RouterLink>
-                        </li>
-                      </ul>
-                    </transition>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+                  <transition
+                    enter-active-class="transition-all duration-500 ease-out"
+                    enter-from-class="max-h-0 opacity-0"
+                    enter-to-class="max-h-96 opacity-100"
+                    leave-active-class="transition-all duration-400 ease-in"
+                    leave-from-class="max-h-96 opacity-100"
+                    leave-to-class="max-h-0 opacity-0"
+                  >
+                    <ul v-show="openSubmenus.has('sous-rubriques')" class="overflow-hidden mt-6 space-y-5 pl-4">
+                      <li v-for="cat in subCategories" :key="cat">
+                        <RouterLink
+                          :to="`/rubrique/${cat.toLowerCase().replace(/ & /g,'-').replace(/ /g,'-')}`"
+                          @click="mobileMenuOpen = false"
+                          class="block text-xl font-medium text-gray-600 dark:text-gray-300 hover:text-[#04A7D6] hover:translate-x-3 transition-all duration-300"
+                        >
+                          {{ cat }}
+                        </RouterLink>
+                      </li>
+                    </ul>
+                  </transition>
+                </li>
+              </ul>
+            </nav>
           </div>
         </div>
       </transition>
