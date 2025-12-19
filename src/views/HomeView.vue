@@ -76,7 +76,7 @@ onMounted(() => {
           Informer juste. Informer vrai.<br />
           <span class="font-bold text-[#F9A826] drop-shadow-lg">Et autrement.</span>
         </p>
-        <div class="mt-12 py-6 flex flex-wrap gap-6 md:gap-8">
+        <div class="mt-12 py-2 flex flex-wrap gap-6 md:gap-8">
           <RouterLink
             to="/rubrique/actualites"
             class="px-10 py-5 bg-gradient-to-r from-[#04A7D6] to-[#048FC6] text-white text-lg md:text-xl font-black rounded-3xl hover:from-[#048FC6] hover:to-[#04A7D6] transition-all duration-500 shadow-2xl hover:shadow-[#04A7D6]/50 hover:-translate-y-1"
