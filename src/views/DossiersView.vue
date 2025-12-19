@@ -164,7 +164,6 @@ const regularDossiers = dossiers.value.filter(d => !d.featured)
 /* Amélioration du line-clamp pour une meilleure compatibilité */
 .line-clamp-3 {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
